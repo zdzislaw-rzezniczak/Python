@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Ile jest 2 + 2",
+    "answers" : [
+      {
+        "text" : "cztery",
+        "correct" : true
+      },{
+        "text" : "piec",
+        "correct" : false
+      },
+      {
+        "text" : "szesc",
+        "correct" : false
+      }
+    ]
+  },
+  {
+    "question": "Ile jest 2 * 2",
+    "answers" : [
+      {
+        "text" : "cztery",
+        "correct" : true
+      },{
+        "text" : "piec",
+        "correct" : false
+      },
+      {
+        "text" : "szesc",
+        "correct" : false
+      }
+    ]
+  },
+  {
+    "question": "Ile jest 3 + 4",
+    "answers" : [
+      {
+        "text" : "dziewiec",
+        "correct" : false
+      },{
+        "text" : "siedem",
+        "correct" : true
+      },
+      {
+        "text" : "osiem",
+        "correct" : false
+      }
+    ]
+  }
+]
