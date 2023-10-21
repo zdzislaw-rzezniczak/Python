@@ -29,7 +29,20 @@ while game_is_on:
 
     if snake.segments[0].distance(food) < 15:
         food.refresh()
+        snake.extend()
         scoreboard.score += 1
         scoreboard.refresh()
+
+    # Zderzenie ze ścianami
+    if (snake.segments[0].xcor() > 280 or snake.segments[0].xcor() < -280 or snake.segments[0].ycor() > 280 or
+            snake.segments[0].ycor() < -280):
+        scoreboard.game_over()
+        game_is_on = False
+
+    # Zderzenie z ogonem
+    for segment in snake.segments[1:]:
+        if snake.segments[0].distance(segment) < 10:
+            game_is_on = False
+            scoreboard.game_over()
 
 screen.exitonclick()
