@@ -14,6 +14,7 @@ class Snake:
         self.segments = []
 
 
+
     def create_snake(self):
         for _ in range(0, 3):
             turtle = Turtle("square")
