@@ -28,8 +28,8 @@ while game_is_on:
     paddle2.move()
     ball.move()
 
-    if paddle1.difference_(ball.position_()) < (20, 20):
-        ball.change_direction()
+    if ball.distance(paddle1) < 20 or ball.distance(paddle2) < 20:
+        ball.bounce_x()
 
 
 screen.exitonclick()
