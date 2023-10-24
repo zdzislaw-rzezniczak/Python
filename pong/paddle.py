@@ -10,7 +10,8 @@ class Paddle(Turtle):
         self.penup()
         self.speed("fastest")
         self.color("white")
-        self.setposition(x=x_position, y=0)
+
+
         self.score = 0
 
     def up(self):
