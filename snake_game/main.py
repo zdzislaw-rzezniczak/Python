@@ -36,13 +36,18 @@ while game_is_on:
     # Zderzenie ze ścianami
     if (snake.segments[0].xcor() > 280 or snake.segments[0].xcor() < -280 or snake.segments[0].ycor() > 280 or
             snake.segments[0].ycor() < -280):
-        scoreboard.game_over()
-        game_is_on = False
+        snake.snake_reset()
+        scoreboard.set_high_score()
+    # scoreboard.game_over()
+    # game_is_on = False
 
     # Zderzenie z ogonem
     for segment in snake.segments[1:]:
         if snake.segments[0].distance(segment) < 10:
-            game_is_on = False
-            scoreboard.game_over()
+            snake.snake_reset()
+            scoreboard.set_high_score()
+
+            # game_is_on = False
+            # scoreboard.game_over()
 
 screen.exitonclick()
