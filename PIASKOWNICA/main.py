@@ -1,46 +1,24 @@
-<<<<<<< HEAD
-# This is a sample Python script.
+# import csv
+#
+# with open("weather_data.csv") as data_file:
+#     data = csv.reader(data_file)
+#     temperature = []
+#     for row in data:
+#         if row[1] != ("temp"):
+#             temperature.append(row[1])
+#
+# print(temperature)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-=======
-import turtle
-from turtle import Turtle, Screen, color
-import random
-
-timmy = Turtle()
-timmy.shape("turtle")
-turtle.colormode(255)
+import pandas as pd
 
 
-def change_color():
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    return r, g, b
+data = pd.read_csv("weather_data.csv")
+# temp_list = data['temp'].to_list()
+#
+# print(temp_list)
+# max = data['temp'].max()
+# print(max)
 
-
-
-num_sides = 3
-for _ in range(10):
-    for i in range(num_sides):
-        timmy.forward(100)
-        timmy.left(360 / num_sides)
-    num_sides += 1
-    timmy.color(change_color())
-
-screen = Screen()
-screen.exitonclick()
->>>>>>> bdaf571 (turtle commit)
+monday = data[data.day == "Monday"]
+print(monday.temp * 9 / 5 + 32)
+# print(data[data.temp == data.temp.max()])
