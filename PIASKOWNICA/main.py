@@ -1,24 +1,23 @@
-# import csv
-#
-# with open("weather_data.csv") as data_file:
-#     data = csv.reader(data_file)
-#     temperature = []
-#     for row in data:
-#         if row[1] != ("temp"):
-#             temperature.append(row[1])
-#
-# print(temperature)
+from tkinter import *
+from functools import partial
 
-import pandas as pd
+window = Tk()
+window.title("My first GUI Program")
+window.minsize(500, 300)
+
+my_label = Label(text="Cześć Zocha")
+my_label.pack()
 
 
-data = pd.read_csv("weather_data.csv")
-# temp_list = data['temp'].to_list()
-#
-# print(temp_list)
-# max = data['temp'].max()
-# print(max)
+def change_label(label):
+    new_text = input1.get()
+    label.config(text=new_text)
 
-monday = data[data.day == "Monday"]
-print(monday.temp * 9 / 5 + 32)
-# print(data[data.temp == data.temp.max()])
+
+button = Button(text="change", command=partial(change_label, label=my_label))
+button.pack()
+
+input1 = Entry(width=10)
+input1.pack()
+
+window.mainloop()
