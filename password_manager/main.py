@@ -1,3 +1,4 @@
+import json
 from functools import partial
 from tkinter import *
 from tkinter import messagebox
@@ -11,16 +12,25 @@ def save():
     website = entry_website.get()
     email = entry_email.get()
     password = entry_password.get()
+    new_data = {website: {
+        "email": email,
+        "password": password
+    }}
 
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showwarning("No content", "uzupełnij dane")
     else:
-        text_file = open("data.txt", "a")
-        text_file.write(f"{website} | {email} | {password}\n")
+        with open("data.json", "r") as json_file:
+            # text_file.write(f"{website} | {email} | {password}\n")
+            data = json.load(json_file)
+            data.update(new_data)
+
+        with open("data.json", "w") as json_file:
+            json.dump(data, json_file, indent=4)
+
         entry_website.delete(0, END)
         entry_password.delete(0, END)
         messagebox.showinfo("Saved to a file", "Pomyślnie zapisano do pliku")
-        text_file.close()
 
 
 def open_popup():
