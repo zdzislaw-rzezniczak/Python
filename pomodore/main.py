@@ -38,12 +38,21 @@ def start_timer():
     if reps % 8 == 0:
         count_down(long_break_sec)
         title_lbl.config(text="Break", fg=RED)
+        window.attributes('-topmost', 1)
+        window.attributes('-topmost', 0)
+
     if reps % 2 == 0:
         count_down(short_break_sec)
         title_lbl.config(text="Break", fg=PINK)
+        window.attributes('-topmost', 1)
+        window.attributes('-topmost', 0)
+
     else:
         count_down(work_sec)
         title_lbl.config(text="Work", fg=GREEN)
+        window.attributes('-topmost', 1)
+        window.attributes('-topmost', 0)
+
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
