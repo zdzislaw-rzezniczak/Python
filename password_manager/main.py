@@ -20,14 +20,18 @@ def save():
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showwarning("No content", "uzupełnij dane")
     else:
-        with open("data.json", "r") as json_file:
-            # text_file.write(f"{website} | {email} | {password}\n")
-            data = json.load(json_file)
-            data.update(new_data)
-
-        with open("data.json", "w") as json_file:
-            json.dump(data, json_file, indent=4)
-
+        try:
+            with open("data.json", "r") as json_file:
+                # text_file.write(f"{website} | {email} | {password}\n")
+                data = json.load(json_file)
+                data.update(new_data)
+        except FileNotFoundError:
+            with open("data.json", "w") as json_file:
+                json.dump(new_data, json_file, indent=4)
+        else:
+            with open("data.json", "w") as json_file:
+                json.dump(data, json_file, indent=4)
+                
         entry_website.delete(0, END)
         entry_password.delete(0, END)
         messagebox.showinfo("Saved to a file", "Pomyślnie zapisano do pliku")
