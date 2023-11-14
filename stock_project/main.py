@@ -34,8 +34,8 @@ def send_email(subject, body, sender, recipients, password):
 
 url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={STOCK_NAME}&apikey={API_KEY_ALPHAVANTAGE_NEWS}'
 r = requests.get(url)
-print(r.json())
 data = r.json()["Time Series (Daily)"]
+print(data)
 data_list = [value for (key, value) in data.items()]
 yesterday_closing_price = float(data_list[0]['4. close'])
 
@@ -54,8 +54,9 @@ parameters = {
     "apiKey": NESW_API_KEY,
 }
 
-response = requests.get(NEWS_ENDPOINT, params=parameters)
-articles = response.json()['articles']
+news_response = requests.get(NEWS_ENDPOINT, params=parameters)
+print(news_response.json())
+articles = news_response.json()["articles"]
 
 top_three = articles[:3]
 print(top_three)
