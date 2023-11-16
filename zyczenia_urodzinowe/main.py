@@ -4,7 +4,7 @@ import datetime as dt
 import random
 import pandas as pd
 
-password = "#######"
+password = "##########"
 subject = "Birthday wishes"
 body = "body"
 sender = "zdzichrz@gmail.com"
