@@ -4,7 +4,7 @@ import datetime as dt
 
 from flight_data import FlightData
 
-os.environ['API_KEY_TEQUILA'] = 'X16hAwHxtyZL1FM_JWrBmgJGEqTRgM0y'
+
 API_KEY_TEQUILA = os.environ.get('API_KEY_TEQUILA')
 API_ENDPOINT = 'https://api.tequila.kiwi.com/locations/query'
 API_SEARCH_ENDPOINT = 'https://api.tequila.kiwi.com/v2/search'
