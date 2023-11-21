@@ -36,10 +36,18 @@ for value in top_100:
         song_uri = spotify_result['tracks']['items'][0]['uri']
         spotify_song_uris.append(song_uri)
     except IndexError:
+<<<<<<< HEAD
         print(f"{value} Nie ma w Spotify. Opuszczony")
 
 
 user_id = sp.current_user()["id"]
 playlist = sp.user_playlist_create(user=user_id, name="Plejlista_Billboard_top_100_2023", public=False)
+=======
+        print(f"{value} doesn't exist in Spotify. Skipped.")
+
+
+user_id = sp.current_user()["id"]
+playlist = sp.user_playlist_create(user=user_id, name="Plejlista_2023", public=False)
+>>>>>>> 17d274ca8264513687682ea9a099bc3373b12f2b
 
 sp.playlist_add_items(playlist_id=playlist["id"], items=spotify_song_uris)

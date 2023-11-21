@@ -8,13 +8,26 @@ CLIENT_SPOTIFY_SECRET = "###########################"
 REDIRECT_URL = "http://example.com"
 
 
+<<<<<<< HEAD
+=======
+
+
+date = "2023-01-11"
+
+
+
+>>>>>>> 17d274ca8264513687682ea9a099bc3373b12f2b
 url = "https://trojka.polskieradio.pl/notowania"
 response = requests.get(url)
 soup = BeautifulSoup(response.text, "html.parser")
 
 songs = soup.select("h4.VotingList_songTitle__hY9pS")
 
+<<<<<<< HEAD
 top_lista = [song.text.strip() for song in songs]
+=======
+top_100 = [song.text.strip() for song in songs]
+>>>>>>> 17d274ca8264513687682ea9a099bc3373b12f2b
 
 client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_SPOTIFY_ID, client_secret=CLIENT_SPOTIFY_SECRET)
 sp = spotipy.Spotify(
@@ -29,13 +42,21 @@ sp = spotipy.Spotify(
 
 spotify_song_uris = []
 
+<<<<<<< HEAD
 for value in top_lista:
+=======
+for value in top_100:
+>>>>>>> 17d274ca8264513687682ea9a099bc3373b12f2b
     spotify_result = sp.search(q=f"track:{value}", type="track")
     try:
         song_uri = spotify_result['tracks']['items'][0]['uri']
         spotify_song_uris.append(song_uri)
     except IndexError:
+<<<<<<< HEAD
         print(f"{value} Nie ma w Spotify. Opuszczony")
+=======
+        print(f"{value} doesn't exist in Spotify. Skipped.")
+>>>>>>> 17d274ca8264513687682ea9a099bc3373b12f2b
 
 
 user_id = sp.current_user()["id"]
