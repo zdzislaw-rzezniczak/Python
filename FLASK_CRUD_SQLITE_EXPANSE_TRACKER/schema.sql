@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS expenses;
+
+CREATE TABLE expenses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    category TEXT NOT NULL,
+    total FLOAT NOT NULL,
+    description TEXT
+);

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Wydatki {% endblock %}</h1>
+<table class="table table-striped">
+    <thead>
+            <th>Data</th>
+            <th>Kategoria</th>
+            <th>Suma</th>
+            <th>Opis</th>
+    </thead>
+    {% for expense in expenses %}
+
+          <tr>
+            <td>{{ expense['created'] }}</td>
+            <td>{{ expense['category'] }}</td>
+            <td>{{ expense['total'] }}</td>
+            <td>{{ expense['description'] }}</td>
+            <td><a class="btn btn-success" href="{{ url_for('edit', id=expense['id']) }}">Edit</a></td>
+          </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

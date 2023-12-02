@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Wydatki {% endblock %}</h1>
+<table class="table table-striped">
+    <thead>
+            <th>Data</th>
+            <th>Kategoria</th>
+            <th>Suma</th>
+            <th>Opis</th>
+    </thead>
+    <tr>
+        <form method="post">
+             <td><input class="form-control" type="text" name="created_search"
+               placeholder="created" value={{date}}></input></td>
+            <td><select class="form-control" id="category" name="category_search">
+              <option value="zywnosc" {{ 'selected' if category == 'zywnosc'}} >Zywnosc</option>
+              <option value="paliwo" {{ 'selected' if category == 'paliwo'}}>Paliwo</option>
+              <option value="odziez" {{ 'selected' if category == 'odziez'}}>Odziez</option>
+              <option value="opal" {{ 'selected' if category == 'opal'}}>Opal</option>
+              <option value="prad" {{ 'selected' if category == 'prad'}}>Prad</option>
+              <option value="gaz" {{ 'selected' if category == 'gaz'}}>Gaz</option>
+              <option value="telekomunikacja" {{ 'selected' if category == 'telekomunikacja'}}>Telekomunikacja</option>
+              <option value="" {{ 'selected' if category == ''}}></option>
+            </select></td>
+            <td><input class="form-control" type="text" name="total_search"
+               placeholder="total" value={{total}}></input></td>
+            <td><input class="form-control" type="text" name="description_search"
+               placeholder="description" value={{description}}></input></td>
+              <td><button class="btn btn-success" type="submit">Submit</button></td>
+        </form>
+
+          </tr>
+    {% for expense in expenses %}
+
+          <tr>
+            <td>{{ expense['created'] }}</td>
+            <td>{{ expense['category'] }}</td>
+            <td>{{ expense['total'] }}</td>
+            <td>{{ expense['description'] }}</td>
+              <td><a class="btn btn-success" href="{{ url_for('edit', id=expense['id']) }}">Edit</a></td>
+          </tr>
+    {% endfor %}
+
+     <tr>
+            <td></td>
+            <td></td>
+            <td>{{suma}}</td>
+            <td></td>
+              <td></td>
+          </tr>
+    </table>
+
+<div class="border">
+             <div class="header">
+             </div></br></br></br>
+                <h4 class="bottom">
+                     Logged as  {{session.username}}!!
+                </h4></br></br></br>
+                <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+          </div>
+
+
+{% endblock %}

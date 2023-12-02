@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Edit "{{ expense['id'] }}" {% endblock %}</h1>
+    <form method="post">
+    <div class="form-group">
+        <label for="category">Wybierz kategorię:</label>
+            <select class="form-control" id="category" name="category" >
+              <option value="zywnosc" {{ 'selected' if expense['category'] == zywnosc}} >Zywnosc</option>
+              <option value="paliwo" {{ 'selected' if expense['category'] == "paliwo"}} >Paliwo</option>
+              <option value="odziez" {{ 'selected' if expense['category'] == "odziez"}}>Odziez</option>
+              <option value="opal" {{ 'selected' if expense['category'] == "opal"}}>Opal</option>
+              <option value="prad" {{ 'selected' if expense['category'] == "prad"}}>Prad</option>
+              <option value="gaz" {{ 'selected' if expense['category'] == "gaz"}}>Gaz</option>
+              <option value="telekomunikacja" {{ 'selected' if expense['category'] == "telekomunikacja"}}>Telekomunikacja</option>
+            </select>
+        <br>
+        <label for="total">Suma</label>
+        <br>
+        <input class="form-control" type="number" step="0.01" name="total"
+               placeholder="total" value="{{ expense['total'] }}"></input>
+        <br>
+
+        <label for="description">Opis</label>
+        <br>
+        <textarea class="form-control" name="description"
+                  placeholder="Post content"
+                  rows="6"
+                  cols="30"
+                  >{{ expense['description']}}</textarea>
+        <br>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </div>
+    </form>
+    <form action="{{ url_for('delete', id=expense['id']) }}" method="POST">
+        <input class="btn btn-danger" type="submit" value="Delete"
+                onclick="return confirm('Are you sure you want to delete this expense?')">
+    </form>
+{% endblock %}
